@@ -19,6 +19,7 @@ import Register from './pages/Register';
 import User from './pages/User';
 
 import Navbar from './components/Navbar';
+import PrivateRoute from './components/PrivateRoute'
 
 import 'bootswatch/dist/superhero/bootstrap.min.css';
 
@@ -44,7 +45,7 @@ const App = () => {
           <Route path="/posts" component={Posts} />
           <Route path="/profile" component={Profile} />
           <Route path="/register" component={Register} />
-          <Route path="/user" component={User} />
+          <PrivateRoute path="/user" component={User} />
         </Switch>
       </CurrentLanguageContext.Provider>
     </IntlProvider>
