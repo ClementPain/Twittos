@@ -1,0 +1,78 @@
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import  { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from '../../redux/user/userActions';
+
+const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(fetchUser())
+  }
+
+  const data = {
+    username: username,
+    email: email,
+    password: password
+  }
+
+  const fetchUser = () =>{
+    return (dispatch) => {
+      dispatch(fetchUserRequest()); //Dispatch déclenche l'action fetchUserResquest pour passer le loading à "True".
+      fetch("https://my-pasteque-space.herokuapp.com/auth/local/register", {
+        "method": "POST",
+        "header": {
+          "Content-Type": "application/json"
+        },
+        "body": JSON.stringify(data)
+      })  
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response)
+      if (response.statusCode === 400) {
+        dispatch(fetchUserFailure(response.message)); 
+      } else {
+        dispatch(fetchUserSuccess(response));
+      }
+      })
+    }
+  }
+
+  return (
+    <>
+    <h1>REGISTER</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Username:
+          <input
+            type="text"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+        </label>
+        <label>
+          Email:
+          <input
+            type="text"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            type="text"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </>
+  );
+}
+
+export default Register

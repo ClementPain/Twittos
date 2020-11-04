@@ -15,7 +15,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Posts from './pages/Posts';
 import Profile from './pages/Profile';
-import Signup from './pages/Signup';
+import Register from './pages/Register';
 import User from './pages/User';
 
 import 'bootswatch/dist/superhero/bootstrap.min.css';
@@ -40,7 +40,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/posts" component={Posts} />
           <Route path="/profile" component={Profile} />
-          <Route path="/signup" component={Signup} />
+          <Route path="/register" component={Register} />
           <Route path="/user" component={User} />
         </Switch>
       </CurrentLanguageContext.Provider>
