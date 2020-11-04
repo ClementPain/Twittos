@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import ButtonLanguage from './ButtonLanguage';
+import IsLogged from './IsLogged';
 
 const Navbar = ({ languages }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
     <Link to='/' className="navbar-brand">Twittos</Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
 
     <div className="collapse navbar-collapse" id="navbarColor01">
       <ul className="navbar-nav mr-auto">
@@ -16,9 +15,9 @@ const Navbar = ({ languages }) => (
             <span className="sr-only">(current)</span>
           </Link>
         </li>
-        <li className="nav-item">
-          <Link to="/login" className="nav-link">Login</Link>
-        </li>
+        
+        <IsLogged />
+        
         <li className="nav-item">
           <Link to="/posts" className="nav-link">Posts</Link>
         </li>
