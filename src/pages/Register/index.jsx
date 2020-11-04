@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import  { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from '../../redux/user/userActions';
 import Cookies from 'js-cookie';
+import { Redirect } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirection, setRedirection]= useState(false)
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -38,6 +40,7 @@ const Register = () => {
       } else {
         dispatch(fetchUserSuccess(response.user.username));
         Cookies.set('authentificationToken', response.jwt);
+        setRedirection(true)
       }
       })
     }
@@ -45,6 +48,7 @@ const Register = () => {
 
   return (
     <>
+    {redirection && <Redirect to='/'/>}
     <h1>REGISTER</h1>
       <form onSubmit={handleSubmit}>
         <label>

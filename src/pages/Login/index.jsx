@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import  { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from '../../redux/user/userActions';
 import Cookies from 'js-cookie';
+import { Redirect } from 'react-router-dom';
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [redirection, setRedirection]= useState(false)
   const dispatch = useDispatch();
 
 
@@ -34,11 +36,14 @@ const Login = () => {
       } else {
         dispatch(fetchUserSuccess(response.user.username));
         Cookies.set('authentificationToken', response.jwt);
+        setRedirection(true)
       }
     })
   }
 
   return (
+  <>
+  {redirection && <Redirect to='/'/>}
   <form onSubmit={handleSubmitLogin}>
     <fieldset>
       <h1>LOGIN</h1>
@@ -61,6 +66,7 @@ const Login = () => {
       <input type="submit" value="Submit" />
     </fieldset>
   </form>
+  </>
   )
 }
 
