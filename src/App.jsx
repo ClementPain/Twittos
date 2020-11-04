@@ -18,6 +18,8 @@ import Profile from './pages/Profile';
 import Register from './pages/Register';
 import User from './pages/User';
 
+import Navbar from './components/Navbar';
+
 import 'bootswatch/dist/superhero/bootstrap.min.css';
 
 const messages = {
@@ -35,6 +37,7 @@ const App = () => {
         language,
         changeLanguage: (newLanguage) => setLanguage(newLanguage)
       }}>
+        <Navbar languages = { Object.keys(messages) } />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />

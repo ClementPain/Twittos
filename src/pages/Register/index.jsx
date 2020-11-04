@@ -24,7 +24,7 @@ const Register = () => {
       dispatch(fetchUserRequest()); //Dispatch déclenche l'action fetchUserResquest pour passer le loading à "True".
       fetch("https://my-pasteque-space.herokuapp.com/auth/local/register", {
         "method": "POST",
-        "header": {
+        "headers": {
           "Content-Type": "application/json"
         },
         "body": JSON.stringify(data)
