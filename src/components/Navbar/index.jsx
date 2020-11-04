@@ -19,7 +19,7 @@ const Navbar = ({ languages }) => (
         <IsLogged />
         
         <li className="nav-item">
-          <Link to="/posts" className="nav-link">Posts</Link>
+          <Link to="/postslist" className="nav-link">Posts</Link>
         </li>
         <li className="nav-item">
           <Link to="/profile" className="nav-link">Profile</Link>

@@ -13,7 +13,7 @@ import messagesFr from './assets/translation/fr';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Posts from './pages/Posts';
+import PostsList from './pages/PostsList';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
 import User from './pages/User';
@@ -42,10 +42,10 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
-          <Route path="/posts" component={Posts} />
           <Route path="/profile" component={Profile} />
           <Route path="/register" component={Register} />
           <PrivateRoute path="/user" component={User} />
+          <PrivateRoute path="/postslist" component={PostsList} />
         </Switch>
       </CurrentLanguageContext.Provider>
     </IntlProvider>
