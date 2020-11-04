@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import  { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from '../../redux/user/userActions';
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+
 
   const data = {
     identifier: identifier,
@@ -31,6 +33,7 @@ const Login = () => {
         dispatch(fetchUserFailure(response.message));
       } else {
         dispatch(fetchUserSuccess(response.user.username));
+        Cookies.set('authentificationToken', response.jwt);
       }
     })
   }

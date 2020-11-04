@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import  { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from '../../redux/user/userActions';
+import Cookies from 'js-cookie';
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -36,6 +37,7 @@ const Register = () => {
         dispatch(fetchUserFailure(response.message)); 
       } else {
         dispatch(fetchUserSuccess(response.user.username));
+        Cookies.set('authentificationToken', response.jwt);
       }
       })
     }
