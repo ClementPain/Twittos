@@ -42,10 +42,10 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
-          <Route path="/profile" component={Profile} />
+          <PrivateRoute path="/profile" component={Profile} />
           <Route path="/register" component={Register} />
           <PrivateRoute path="/user" component={User} />
-          <PrivateRoute path="/postslist" component={PostsList} />
+          <PrivateRoute path="/postslist" component={PostsList} />          
         </Switch>
       </CurrentLanguageContext.Provider>
     </IntlProvider>
