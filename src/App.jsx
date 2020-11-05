@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-
 import {
   BrowserRouter as Router,
   Route,
@@ -13,10 +11,11 @@ import messagesFr from './assets/translation/fr';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
-import PostsList from './pages/PostsList';
-import Profile from './pages/Profile';
 import Register from './pages/Register';
-import User from './pages/User';
+import Profile from './pages/Profile';
+
+import PostsList from './pages/PostsList';
+import CreatePost from './pages/PostsList/CreatePost';
 
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute'
@@ -29,7 +28,6 @@ const messages = {
 
 const App = () => {
   const [language, setLanguage] = useState('fr');
-  const counter = useSelector(state => state)
 
   return (
   <Router>
@@ -39,14 +37,16 @@ const App = () => {
         changeLanguage: (newLanguage) => setLanguage(newLanguage)
       }}>
         <Navbar languages = { Object.keys(messages) } />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <PrivateRoute path="/profile" component={Profile} />
-          <Route path="/register" component={Register} />
-          <PrivateRoute path="/user" component={User} />
-          <PrivateRoute path="/postslist" component={PostsList} />          
-        </Switch>
+        <div className="container-fluid mt-2">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/register" component={Register} />
+            <PrivateRoute path="/postslist" component={PostsList} />
+            <PrivateRoute path="/createpost" component={CreatePost} />          
+          </Switch>
+        </div>
       </CurrentLanguageContext.Provider>
     </IntlProvider>
   </Router>

@@ -38,7 +38,7 @@ const Register = () => {
       if (response.statusCode === 400) {
         dispatch(fetchUserFailure(response.message)); 
       } else {
-        dispatch(fetchUserSuccess(response.user.username));
+        dispatch(fetchUserSuccess(response.user));
         Cookies.set('authentificationToken', response.jwt);
         setRedirection(true)
       }

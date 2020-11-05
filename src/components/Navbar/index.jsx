@@ -24,9 +24,6 @@ const Navbar = ({ languages }) => (
         <li className="nav-item">
           <Link to="/profile" className="nav-link">Profile</Link>
         </li>
-        <li className="nav-item">
-          <Link to="/user" className="nav-link">User</Link>
-        </li>
       </ul>
       <div className="form-inline my-2 my-lg-0">
       <ButtonLanguage languages={ languages } />

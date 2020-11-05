@@ -5,7 +5,7 @@ export const fetchUserRequest = () => {
   }
 }
 
-export const fetchUserSuccess = (currentUser) => {
+export const fetchUserSuccess = (currentUser = {}) => {
   console.log("JE SUIS DANS FetchUserSUCCESS")
   return {
     type: 'FETCH_USER_SUCCESS',

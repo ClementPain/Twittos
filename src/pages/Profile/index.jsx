@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import FormProfile from '../../components/FormProfile'
 import Cookies from 'js-cookie';
 
 const Profile = () => {
-  const currentUser = useSelector(state => state.userReducer.currentUser);
-
   const [userInformation, setUserInformation] = useState([]);
   
   useEffect( () => {
@@ -24,17 +21,17 @@ const Profile = () => {
   },[]);
 
   return (
-    <>
-    <div className="container row justify-content-center">
-      <div className="col-8" >
-      <h1>Hello { userInformation.username }</h1>
-      <p>E-mail : { userInformation.email }</p>
-      <p>Description : { userInformation.description }</p>
+    <div className="row m-3">
+      <div className="col-md-6 justify-content-start" >
+        <h1>Hello { userInformation.username }</h1>
+        <p>E-mail : { userInformation.email }</p>
+        <p>Description : { userInformation.description }</p>
+      </div>
+      <div className="col-md-6 justify-content-center">
+        <h3>Update your profile</h3>
         <FormProfile userId={userInformation.id}/>
-
       </div>
     </div>
-    </>
   );
 };
 

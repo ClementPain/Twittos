@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import  { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from '../../redux/user/userActions';
 import Cookies from 'js-cookie';
 import { Redirect } from 'react-router-dom';
@@ -30,11 +30,10 @@ const Login = () => {
     })
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
       if (response.statusCode >= 400) {
         dispatch(fetchUserFailure(response.message));
       } else {
-        dispatch(fetchUserSuccess(response.user.username));
+        dispatch(fetchUserSuccess(response.user));
         Cookies.set('authentificationToken', response.jwt);
         setRedirection(true)
       }

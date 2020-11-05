@@ -1,17 +1,14 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl' ;
 
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {increment, decrement} from '../../redux/counter/counterActions';
-// import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './../redux/user';
 
 import PostCard from '../../components/PostCard';
 
 const Home = () => {
   const dispatch = useDispatch();
   const counter = useSelector(state => state.counterReducer);
-  console.log(counter);
 
   return (
     <main>
