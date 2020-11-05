@@ -30,7 +30,7 @@ const PostsList = () => {
       </div> 
       <div className="container">
         <div className="row">
-          { postsArray.map( (post) => (
+          { postsArray.map( post => (
             <div className="col-md-4">
               <PostCard
                 username = { post.user.username }
@@ -38,6 +38,9 @@ const PostsList = () => {
                 date = { Moment(Date(post.created_at)).format('DD-MM-YYYY') }
                 likes = { post.like }
                 postId = { post.id }
+                setPostsArray = { setPostsArray }
+                postsArrays = { postsArray }
+                post = { post }
               />
             </div>
             ))

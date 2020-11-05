@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 
-const PostCard = ({ username, content, date, likes, postId }) => {
-  let [likesCount, setLikesCount] = useState(likes);
-
+const PostCard = ({ username, content, date, likes, postId, setPostsArray, postsArray, post }) => {
   const likePost = (e) => {
     let dataLikes = {
-      like: likesCount + parseInt(e.target.value)
+      like: likes + parseInt(e.target.value)
     };
 
     e.preventDefault();
@@ -20,7 +18,6 @@ const PostCard = ({ username, content, date, likes, postId }) => {
     })
     .then(response => response.json())
     .then( () => {
-      setLikesCount(dataLikes.like);
     })
   };
 
@@ -34,7 +31,7 @@ const PostCard = ({ username, content, date, likes, postId }) => {
           <p className="card-text">{ date }</p>
         </div>
         <div className="col-md-6 justify-content-end">
-          <p className="card-text">Likes : { likesCount }</p>
+          <p className="card-text">Likes : { likes }</p>
           <button onClick={likePost} value='1' className="btn btn-success">Like</button>
           <button onClick={likePost} value='-1' className="btn btn-danger">Unlike</button>
         </div>
