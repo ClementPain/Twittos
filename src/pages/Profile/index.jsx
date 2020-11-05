@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import FormProfile from '../../components/FormProfile'
 import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const [userInformation, setUserInformation] = useState([]);
@@ -30,8 +31,13 @@ const Profile = () => {
         <p>Description : { userInformation.description }</p>
       </div>
       <div className="col-md-6 justify-content-center">
-        <h3>Update your profile</h3>
-        <FormProfile userId={userInformation.id}/>
+        { currentUser.id === userInformation.id && (
+        <div>
+          <h3>Update your profile</h3>
+          <FormProfile userId={userInformation.id}/>
+        </div>
+        )
+        }
       </div>
     </div>
   );
