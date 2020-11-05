@@ -23,7 +23,7 @@ const PostCard = ({ username, content, date, likes, postId, setPostsArray, posts
 
   return (
   <div className="card border-primary mb-3" key={content}>
-    <div className="card-header"> { username }</div>
+    <div className="card-header">{ username }</div>
     <div className="card-body">
       <h4 className="card-title">{ content }</h4>
       <div className="row">
