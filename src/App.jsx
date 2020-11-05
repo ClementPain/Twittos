@@ -45,6 +45,7 @@ const App = () => {
             <PrivateRoute path="/register" component={Register} />
             <PrivateRoute path="/postslist" component={PostsList} />
             <PrivateRoute path="/createpost" component={CreatePost} />          
+            <PrivateRoute path="/profile/:userId" component={Profile} />     
           </Switch>
         </div>
       </CurrentLanguageContext.Provider>

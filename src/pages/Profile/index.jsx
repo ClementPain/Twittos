@@ -6,13 +6,15 @@ const Profile = () => {
   const [userInformation, setUserInformation] = useState([]);
   
   useEffect( () => {
-    fetch("https://my-pasteque-space.herokuapp.com/users/me", {
+
+    fetch(`https://my-pasteque-space.herokuapp.com/users/${userInformation.id}`, {
       method: 'get',
       headers: {
-        'Authorization': `Bearer ${Cookies.get('authentificationToken')}`,
-        'Content-Type': 'application/json'
-      }
+      'Authorization': `Bearer '${Cookies.get('authentificationToken')}'`,
+      'Content-Type': 'application/json'
+      }      
     })
+
     .then((response) => response.json())
     .then((response) => {
       console.log(response)
