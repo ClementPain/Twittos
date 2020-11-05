@@ -22,7 +22,7 @@ const Navbar = ({ languages }) => (
           <Link to="/postslist" className="nav-link">Posts</Link>
         </li>
         <li className="nav-item">
-          <Link to="/profile" className="nav-link">Profile</Link>
+          <Link to="/profile/me" className="nav-link">Profile</Link>
         </li>
       </ul>
       <div className="form-inline my-2 my-lg-0">

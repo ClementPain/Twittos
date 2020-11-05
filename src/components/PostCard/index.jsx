@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
 
 const PostCard = ({ username, content, date, likes, postId, setPostsArray, postsArray, post }) => {
+  
   const likePost = (e) => {
     let dataLikes = {
       like: likes + parseInt(e.target.value)
     };
-
+      
     e.preventDefault();
     fetch(`https://my-pasteque-space.herokuapp.com/posts/${postId}`, {
       method: "put",
@@ -23,7 +25,11 @@ const PostCard = ({ username, content, date, likes, postId, setPostsArray, posts
 
   return (
   <div className="card border-primary mb-3" key={content}>
-    <div className="card-header">{ username }</div>
+    <div className="card-header">
+      { post?.user && (
+        <Link to={`/profile/${post.user.id}`} > {username} </Link>
+      )}
+    </div>
     <div className="card-body">
       <h4 className="card-title">{ content }</h4>
       <div className="row">

@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import FormProfile from '../../components/FormProfile'
 import Cookies from 'js-cookie';
 
 const Profile = () => {
   const [userInformation, setUserInformation] = useState([]);
-  
+  const { userId } = useParams();
+
   useEffect( () => {
-    fetch("https://my-pasteque-space.herokuapp.com/users/me", {
-      method: 'get',
-      headers: {
-        'Authorization': `Bearer ${Cookies.get('authentificationToken')}`,
-        'Content-Type': 'application/json'
-      }
+    fetch(`https://my-pasteque-space.herokuapp.com/users/${userId}`, {
+      "method": "GET",
+      "headers": {
+        'Authorization': `Bearer ${Cookies.get('authentificationToken')}`
+      }      
     })
+
     .then((response) => response.json())
     .then((response) => {
       console.log(response)
