@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import PostCard from '../../components/PostCard';
 
 const PostsList = () => {
   
@@ -10,23 +11,29 @@ const PostsList = () => {
     .then((response) => response.json())
     .then((response) => {
       console.log(response)
-      response.map( (post) => {
+      response?.map( (post) => {
       setPostsArray(previousArray => [...previousArray, post] )
-      })  
-      console.log(postsArray)
+      })
     })
-  },[])
-
+  },[]);
 
   return (
-    <main>
-    <h1>Voici la liste des Posts</h1>
-    { postsArray.map( (post) => (
-      <p>
-        {post.text}
-      </p>   
-      ))
-    }
+    <main>      
+      <h1>Voici la liste des Posts</h1>
+      <div className="container">
+        <div className="row">
+          { postsArray.map( (post) => (
+            <div className="col-md-4">
+              <PostCard
+                username = { post.user.username }
+                content = { post.text }
+                date = { post.created_at }
+              />
+            </div>
+            ))
+          }
+        </div>
+      </div>
     </main>
   )
   
