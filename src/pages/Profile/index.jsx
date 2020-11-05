@@ -5,7 +5,10 @@ const Profile = () => {
   const currentUser = useSelector(state => state.userReducer.currentUser);
 
   return (
-    <h1>Hello { currentUser }</h1>
+    <main>
+      <h1>Hello { currentUser }</h1>
+      
+    </main>
   );
 };
 

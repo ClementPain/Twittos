@@ -31,7 +31,7 @@ const Login = () => {
     .then((response) => response.json())
     .then((response) => {
       console.log(response);
-      if (response.statusCode === "400") {
+      if (response.statusCode >= 400) {
         dispatch(fetchUserFailure(response.message));
       } else {
         dispatch(fetchUserSuccess(response.user.username));
