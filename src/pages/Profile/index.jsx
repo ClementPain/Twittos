@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import FormProfile from '../../components/FormProfile'
 import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const [userInformation, setUserInformation] = useState([]);
   
+  const currentUser = useSelector(store => store.userReducer.currentUser);
+  console.log(currentUser)
   useEffect( () => {
 
     fetch(`https://my-pasteque-space.herokuapp.com/users/${userInformation.id}`, {
@@ -12,7 +15,7 @@ const Profile = () => {
       headers: {
       'Authorization': `Bearer '${Cookies.get('authentificationToken')}'`,
       'Content-Type': 'application/json'
-      }      
+      }
     })
 
     .then((response) => response.json())
@@ -30,8 +33,13 @@ const Profile = () => {
         <p>Description : { userInformation.description }</p>
       </div>
       <div className="col-md-6 justify-content-center">
-        <h3>Update your profile</h3>
-        <FormProfile userId={userInformation.id}/>
+        { currentUser.id === userInformation.id && (
+        <div>
+          <h3>Update your profile</h3>
+          <FormProfile userId={userInformation.id}/>
+        </div>
+        )
+        }
       </div>
     </div>
   );
