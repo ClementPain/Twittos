@@ -29,7 +29,9 @@ const Profile = () => {
       <div className="col-8" >
       <h1>Hello { userInformation.username }</h1>
       <p>E-mail : { userInformation.email }</p>
-        <FormProfile />
+      <p>Description : { userInformation.description }</p>
+        <FormProfile userId={userInformation.id}/>
+
       </div>
     </div>
     </>
