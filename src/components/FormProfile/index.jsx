@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 
-
-const FormProfile = ( {userId} ) => {
-
+const FormProfile = ( {userId, setUserInformation} ) => {
   const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
 
-  const data = {
-  "username": username,
-  "description": description
-  }
+  let newUsername = "";
+  let newDescription = "";
+  const currentUser = useSelector(store => store.userReducer.currentUser.username);
+  const currentDescription = useSelector(store => store.userReducer.description);
+  if(username) { newUsername = username } else { newUsername = currentUser };
+  if(username) { newDescription = description } else { newDescription = currentDescription };
 
+  const data = {
+    username: newUsername,
+    description: newDescription
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +30,7 @@ const FormProfile = ( {userId} ) => {
       })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response)
+        setUserInformation(response)
       })
   }
 

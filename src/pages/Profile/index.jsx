@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 const Profile = () => {
   const [userInformation, setUserInformation] = useState([]);
   const { userId } = useParams();
+  const currentUser = useSelector(store => store.userReducer.currentUser);
 
   useEffect( () => {
     fetch(`https://my-pasteque-space.herokuapp.com/users/${userId}`, {
@@ -34,7 +35,10 @@ const Profile = () => {
         { currentUser.id === userInformation.id && (
         <div>
           <h3>Update your profile</h3>
-          <FormProfile userId={userInformation.id}/>
+          <FormProfile
+            userId = { userInformation.id }
+            setUserInformation = { setUserInformation }
+          />
         </div>
         )
         }
