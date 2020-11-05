@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {increment, decrement} from '../../redux/counter/counterActions';
 // import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './../redux/user';
 
-import Post from '../../components/Post';
+import PostCard from '../../components/PostCard';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const Home = () => {
     <main>
       <FormattedMessage id='home.header' />
       <div className="posts">
-        <Post title="hello" content="no way ! :D" />
+        <PostCard title="hello" content="no way ! :D" />
       </div>
       <p>Counter {counter}</p>
       <button onClick={() => dispatch(increment(5))}>+</button>
